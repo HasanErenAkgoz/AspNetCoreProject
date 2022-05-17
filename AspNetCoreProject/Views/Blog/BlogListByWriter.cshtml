@@ -1,0 +1,53 @@
+﻿@using Entity.Concrate
+@model List<Blog>
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<h1>Yazarın Yazıları</h1>
+<table class="table table-bordered  table-hover">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Başlık</td>
+            <td>Oluşturma Tarihi</td>
+            <td>Kategorisi</td>
+            <td>Durum</td>
+            <td>Sil</td>
+            <td>Düzenle</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</td>
+                <td>@item.Category.Name</td>
+                @if (item.Status)
+                {
+                    <td><span class="badge badge-success">Aktif</span></td>
+                }
+                else
+                {
+                    <td><span class="badge badge-danger">Pasif</span></td>
+                }
+                @if (item.Status == false)
+                {
+                    <td>@Html.ActionLink("Aktif Et", "Delete", new { item.Id }, new { @class = "btn btn-success", onclick = "return confirm('Silmek İstediğiniz Blog Yazısını Aktifleştirmek İster Misiniz??')" })</td>
+                }
+                else
+                {
+                    <td>@Html.ActionLink("Sil", "Delete", new { item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+                }
+                <td><a href="/Blog/EditBlog/@item.Id" class="btn btn-warning">Düzenle</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Blog/Add/" class="btn btn-primary">Yeni Blog Oluştur</a>
+

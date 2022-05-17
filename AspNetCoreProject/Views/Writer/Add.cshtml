@@ -1,0 +1,60 @@
+﻿@model AspNetCoreProject.Models.AddProfileImage
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Writer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <form class="form-group">
+                        <div class="form-group">
+                            <label for="exampleInputName1">Yazarın Adı</label>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Email</label>
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Mail)
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Şifre</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
+                            <span>@ViewBag.passwordError</span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Şifre Tekrarı</label>
+                            <input type="password" class="form-control" name="PasswordAgain" />
+                            @Html.ValidationMessageFor(x => x.Password)
+
+                        </div>
+                        <div class="form-group">
+                            <label>Yazarın Resmi</label>
+                            <br />
+                            <input type="file" name="Image" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea1">Yazarın Şehri</label>
+                            <strong> @Html.TextAreaFor(x => x.City, 6, 3, new { @class = "form-control " })</strong>
+                            @Html.ValidationMessageFor(x => x.City)
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea1">Yazarın Hakkında</label>
+                            <strong> @Html.TextAreaFor(x => x.About, 6, 3, new { @class = "form-control " })</strong>
+                            @Html.ValidationMessageFor(x => x.About)
+
+                        </div>
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                        <button class="btn btn-light">İptal</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+

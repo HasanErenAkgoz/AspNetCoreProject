@@ -1,0 +1,33 @@
+﻿@model Entity.Concrate.Blog
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<style>
+    label {
+        margin-top: 5px
+    }
+</style>
+@using (Html.BeginForm("Add", "Blog", FormMethod.Post))
+{
+    <div class="container">
+
+        @Html.Label("Blog Başlığı")
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Title)
+        <br />
+        @Html.Label("Blog Görseli")
+        @Html.TextBoxFor(x => x.ThumbnailImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ThumbnailImage)
+        <br />
+        @Html.Label("Blog Kategorisi")
+        @Html.DropDownListFor(x => x.CategoryId,(List<SelectListItem>)ViewBag.categoryValues, new { @class = "form-control" })
+        <br />
+        @Html.Label("Blog İçerigi")
+        @Html.TextAreaFor(x => x.Content, 10, 3, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Content)
+        <br />
+        <button class="btn btn-info">Yazıyı Kaydet</button>
+    </div>
+}

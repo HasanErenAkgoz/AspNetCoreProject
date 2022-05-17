@@ -1,0 +1,24 @@
+﻿@model Entity.Concrate.MessageTwo
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1 class="text text-center">Mesaj Detay Sayfası</h1>
+<div class="container">
+
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+
+    @Html.Label("Mesaj Id")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj Başlığı")
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj İçeriği")
+    @Html.TextAreaFor(x => x.Details, 10, 3, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    <button class="btn btn-info">Mesajlara Dön</button>
+</div>
+
+

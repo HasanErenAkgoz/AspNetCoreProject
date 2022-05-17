@@ -1,0 +1,30 @@
+﻿@model Entity.Concrate.Blog
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<h1 class="text text-center">Blog Düzenleme Sayfası</h1>
+@using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
+{<div class="container">
+
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @hidden = "true" })
+
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Title)
+    <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(x => x.ThumbnailImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ThumbnailImage)
+    <br />
+    @Html.Label("Blog Kategorisi")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryValues, new { @class = "form-control" })
+    <br />
+    @Html.Label("Blog İçerigi")
+    @Html.TextAreaFor(x => x.Content, 10, 3, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Content)
+    <br />
+    <button class="btn btn-info">Yazıyı Güncelle</button>
+</div>
+}
+

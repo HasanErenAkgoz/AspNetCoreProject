@@ -1,0 +1,26 @@
+﻿@model Entity.Concrate.MessageTwo
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<style>
+    label {
+        margin-top: 5px
+    }
+</style>
+<h1>Yeni Mesaj Oluşturma</h1>
+@using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+{
+
+    @Html.Label("Alıcı")
+    @Html.DropDownListFor(x => x.Receviver, (List<SelectListItem>)ViewBag.RecieverUser, new { @class = "form-control" })
+    <br />
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+    @Html.Label("Mesaj İçeriği")
+    @Html.TextBoxFor(x => x.Details, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Mesajı Gönder</button>
+}

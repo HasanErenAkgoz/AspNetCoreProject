@@ -1,0 +1,32 @@
+﻿@using Entity.Concrate
+@model List<Notification>
+@{
+    ViewData["Title"] = "AllNotification";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+    DateTime now = DateTime.Now;
+    DateTime tarih2 = DateTime.Now;
+}
+
+<h1 class="text text-center">Bildirimler</h1>
+<hr />
+ 
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>#</td>
+            <td>Bildirim</td>
+            <td>Tarih</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+	{
+		 <tr>
+             <td>@item.Id</td>
+             <td>@item.Details</td>
+             <td>@tarih2.Subtract(item.Date).Days Gün Önce Gönderildi</td>
+         </tr>
+	}
+    </tbody>
+</table>
+

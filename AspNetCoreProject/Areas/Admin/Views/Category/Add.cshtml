@@ -1,0 +1,26 @@
+﻿@model Entity.Concrate.Category
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    label {
+        margin-top: 5px
+    }
+</style>
+@using (Html.BeginForm("Add", "Category", FormMethod.Post))
+{
+  
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name)
+        <br />
+        @Html.Label("Kategori Açıklaması")
+        @Html.TextAreaFor(x => x.Description,15,3, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+        <br />
+        <button class="btn btn-info">Yazıyı Kaydet</button>
+}
+

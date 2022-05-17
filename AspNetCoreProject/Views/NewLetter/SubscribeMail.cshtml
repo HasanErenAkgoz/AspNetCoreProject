@@ -1,0 +1,29 @@
+﻿
+<div class="tech-btm">
+    <h4>Mail bültenimize üye olun </h4>
+    <p>Mail bültenimize üye olun ve en güncel haberler mail hesabınıza gelsin </p>
+    @using (Html.BeginForm("SubscribeMail", "NewLetter", FormMethod.Post))
+    {
+        <input type="email" id="txtMail" placeholder="Email" required="" name="Mail">
+        <input type="submit" id="btnClick" value="Üye Ol">
+    }
+</div>
+<script type="text/javascript">
+
+    $('#btnClick').click(function () {
+        let values = {
+            Mail: $("#txtMail").val()
+
+        };
+        $.ajax({
+            type: 'post',
+            url: '/NewsLetter/SubscribeMail',
+            data: values,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+            }
+        });
+    });
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-3.5.1.js">

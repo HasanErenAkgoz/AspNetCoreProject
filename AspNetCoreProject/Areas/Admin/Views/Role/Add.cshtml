@@ -1,0 +1,18 @@
+﻿@using AspNetCoreProject.Models
+@model RoleViewModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Rol Ekleme Sayfası</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Rol Başlığı</label>
+        <input type="text" name="name" class="form-control" />
+    </div>
+    <div asp-validation-summery="ModeOnly"></div>
+
+    <button class="btn btn-success">Kaydet</button>
+</form>

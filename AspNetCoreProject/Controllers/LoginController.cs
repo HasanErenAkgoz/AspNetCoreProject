@@ -53,6 +53,10 @@ namespace AspNetCoreProject.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Login");
         }
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
     }
 }

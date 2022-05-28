@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace AspNetCoreProject.Areas.Admin.Models
 {
-    public class Blog
+    public class RoleAssingVM
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool Exists { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-# Proje Tanıtım Videosu Youtube Linki;
+# Project Promotion Video Youtube Link;
 
 https://www.youtube.com/watch?v=gcE4ZpiMwDo
 
